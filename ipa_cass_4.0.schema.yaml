@@ -1,0 +1,43 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: ipa_cass_4.0
+  name: 语言所音标 4.0
+  version: '0.1'
+  author:
+    - Stone Wei <weist23@mails.tsinghua.edu.cn>
+    - Zhiye Li <yeli.17@stu.pku.edu.cn>
+  description: |
+    使用“语言所音标”4.0 版输入方案输入国际音标IPA。
+    IPA input method in CASS 4.0 standard
+    这版内容尚没有经过充分测试，欢迎反馈意见和建议。
+    
+
+engine:
+  processors:
+    - key_binder
+    - speller
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - abc_segmentor
+    - fallback_segmentor
+  translators:
+    - table_translator
+
+speller:
+  alphabet: 'ZYXWVUTSRQPONMLKJIHGFEDCBAzyxwvutsrqponmlkjihgfedcba_<>\`~."%'':@{}1234567890&?!^|=-+/'
+  delimiter: ' '
+  auto_select: true
+
+translator:
+  dictionary: ipa_cass_4.0
+  enable_sentence: false
+  enable_user_dict: false
+  comment_format:
+    - xform/^~//
+
+key_binder:
+  import_preset: default
